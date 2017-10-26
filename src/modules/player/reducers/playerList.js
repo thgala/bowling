@@ -18,7 +18,7 @@ export default function playerList (state = defaultState, action) {
 
     case ADD_PLAYER:
       return state.concat([{
-        id: Date.now(),
+        id: action.id,
         name: action.name,
       }])
 

@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
+import { save, load } from 'redux-localstorage-simple'
 
 function storeCreator(rootReducer = () => {}) {
   const enhancers = []
@@ -16,12 +17,13 @@ function storeCreator(rootReducer = () => {}) {
   }
 
   const composedEnhancers = compose(
-    applyMiddleware(...middleware),
-    ...enhancers
+    applyMiddleware(...middleware, save()),
+    ...enhancers,
   )
 
   const store = createStore(
     rootReducer,
+    load(),
     composedEnhancers,
   )
 

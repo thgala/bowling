@@ -3,6 +3,7 @@ import { ADD_PLAYER, REMOVE_PLAYER, CHANGE_PLAYERS_ORDER } from './actionTypes'
 export function addPlayer(name) {
   return {
     type: ADD_PLAYER,
+    id: Date.now(),
     name,
   }
 }

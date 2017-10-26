@@ -44,7 +44,6 @@ PlayerList.propTypes = {
   list: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
-    order: PropTypes.number,
   })),
   changePlayersOrder: PropTypes.func,
   removePlayer: PropTypes.func,

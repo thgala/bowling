@@ -12,10 +12,13 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
     "redux": "^3.7.2",
+    "redux-localstorage-simple": "^1.3.1",
+    "redux-persist": "^5.0.1",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
     "semantic-ui-css": "^2.2.12",
-    "semantic-ui-react": "^0.75.1"
+    "semantic-ui-react": "^0.75.1",
+    "shortid": "^2.2.8"
   },
   "scripts": {
     "start": "react-scripts start",
