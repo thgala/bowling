@@ -34,6 +34,8 @@ class PlayerAdd extends Component {
       this.setState({ inputValue: '' })
       addPlayer(inputValue)
     }
+
+    event.preventDefault()
   }
 
   setInputValue(event){
@@ -49,23 +51,25 @@ class PlayerAdd extends Component {
 
     return (
       <div className='PlayerAdd'>
-        <Input
-          placeholder={`Player's name`}
-          action={{
-            labelPosition: 'right',
-            icon: 'plus',
-            content: 'Add new player',
-            onClick: this.addPlayer
-          }}
-          value={inputValue}
-          error={!!inputError}
-          onChange={this.setInputValue}
-        />
-        {inputError &&
-          <div>
-            <Label basic color='red' pointing>{inputError}</Label>
-          </div>
-        }
+        <form onSubmit={this.addPlayer}>
+          <Input
+            fluid
+            placeholder={`Player's name`}
+            action={{
+              labelPosition: 'right',
+              icon: 'plus',
+              content: 'Add new player',
+            }}
+            value={inputValue}
+            error={!!inputError}
+            onChange={this.setInputValue}
+          />
+          {inputError &&
+            <div>
+              <Label basic color='red' pointing>{inputError}</Label>
+            </div>
+          }
+        </form>
       </div>
     )
   }

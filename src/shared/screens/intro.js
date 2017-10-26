@@ -6,7 +6,7 @@ class Intro extends Component {
   render() {
     return (
       <EnterTheGame />
-    );
+    )
   }
 }
 

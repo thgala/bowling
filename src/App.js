@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom'
 
 import 'semantic-ui-css/semantic.min.css'
+import NoPlayersRedirect from './shared/containers/noPlayersRedirect'
 
 import Intro from './shared/screens/intro'
 import Players from './shared/screens/players'
@@ -16,7 +17,7 @@ class App extends Component {
       <div>
         <Route exact path='/' component={Intro} />
         <Route path='/players' title='Players' component={Players} />
-        <Route path='/play' title='Play' component={Play} />
+        <Route path='/play' title='Play' component={NoPlayersRedirect(Play)} />
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import Header from '../components/header'
 
@@ -9,7 +9,7 @@ class Play extends Component {
       <div>
         <Header title='Gameplay' />
       </div>
-    );
+    )
   }
 }
 

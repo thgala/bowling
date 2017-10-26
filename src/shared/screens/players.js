@@ -4,7 +4,7 @@ import { Container, Header as Heading, Icon, Divider } from 'semantic-ui-react'
 
 import Header from '../components/header'
 import PlayerSelection from '../containers/playerSelection'
-import StartTheGame from '../components/startTheGame'
+import StartTheGame from '../containers/startTheGame'
 
 class Players extends Component {
   render() {
@@ -26,7 +26,7 @@ class Players extends Component {
           <StartTheGame />
         </Container>
       </div>
-    );
+    )
   }
 }
 

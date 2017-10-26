@@ -17,7 +17,7 @@ const actionCreators = dispatch => ({
   playerActions: bindActionCreators(Player.actions, dispatch),
 })
 
-class PlayerSelection extends Component {
+class PlayerSelection_Connect extends Component {
   render() {
     const
       { playerList, playerActions } = this.props
@@ -37,4 +37,4 @@ class PlayerSelection extends Component {
   }
 }
 
-export default connect(stateToProps, actionCreators)(PlayerSelection)
+export default connect(stateToProps, actionCreators)(PlayerSelection_Connect)
