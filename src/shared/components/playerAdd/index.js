@@ -49,25 +49,23 @@ class PlayerAdd extends Component {
 
     return (
       <div className='PlayerAdd'>
-        <FormWrap>
-          <FormWrap.Field>
-            <Input
-              placeholder={`Player's name`}
-              action={{
-                labelPosition: 'right',
-                icon: 'plus',
-                content: 'Add new player',
-                onClick: this.addPlayer
-              }}
-              value={inputValue}
-              error={inputError}
-              onChange={this.setInputValue}
-            />
-            {inputError &&
-              <Label basic color='red' pointing>{inputError}</Label>
-            }
-          </FormWrap.Field>
-        </FormWrap>
+        <Input
+          placeholder={`Player's name`}
+          action={{
+            labelPosition: 'right',
+            icon: 'plus',
+            content: 'Add new player',
+            onClick: this.addPlayer
+          }}
+          value={inputValue}
+          error={!!inputError}
+          onChange={this.setInputValue}
+        />
+        {inputError &&
+          <div>
+            <Label basic color='red' pointing>{inputError}</Label>
+          </div>
+        }
       </div>
     )
   }
