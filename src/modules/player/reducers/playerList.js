@@ -4,6 +4,13 @@ import {
   CHANGE_PLAYERS_ORDER,
 } from '../actionTypes'
 
+/*
+  {
+    id: Number,
+    name: String,
+  }
+*/
+
 const defaultState = []
 
 export default function playerList (state = defaultState, action) {
@@ -11,16 +18,19 @@ export default function playerList (state = defaultState, action) {
 
     case ADD_PLAYER:
       return state.concat([{
-        id: 'dfsdf',
+        id: Date.now(),
         name: action.name,
-        order: state.length + 1
       }])
 
     case REMOVE_PLAYER:
-      return state // remove player
+      return state.filter(player => player.id !== action.id)
 
     case CHANGE_PLAYERS_ORDER:
-      return state // change player order
+      let list = state.slice()
+      list[action.oldIndex] = list.splice(action.newIndex, 1, list[action.oldIndex])[0]
+
+      return list
+
 
     default:
       return state

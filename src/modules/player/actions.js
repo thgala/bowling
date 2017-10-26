@@ -14,10 +14,10 @@ export function removePlayer(id) {
   }
 }
 
-export function changePlayersOrder(oldOrder, newOrder) {
+export function changePlayersOrder(oldIndex, newIndex) {
   return {
     type: CHANGE_PLAYERS_ORDER,
-    oldOrder,
-    newOrder,
+    oldIndex,
+    newIndex,
   }
 }

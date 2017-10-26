@@ -15,6 +15,14 @@
   order: -1;
 }
 
-.PlayerList__user div {
+.PlayerList__icon{
+  cursor: pointer;
+}
+
+.PlayerList__icon:last-child {
   margin-left: 15px;
+}
+
+.PlayerList__user div {
+  margin-left: 10px;
 }

@@ -3,6 +3,7 @@
   flex-direction: column;
 }
 
-.PlayerAdd__input{
-  margin-bottom: 15px;
+.PlayerAdd.disabled{
+  opacity: 0.5;
+  pointer-events: none;
 }

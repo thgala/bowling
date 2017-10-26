@@ -4,44 +4,50 @@ import { Button, Image, List, Icon } from 'semantic-ui-react'
 
 import './index.css'
 
-const PlayerList = ({ title, list }) => {
-  return (
+const PlayerList = ({ list, changePlayersOrder, removePlayer }) => {
+  return list.length === 0 ? null : (
     <div className='PlayerList'>
       <List divided verticalAlign='middle'>
-        <List.Item>
-          <div className='PlayerList__item'>
-            <List.Content floated='right'>
-              <Icon name='arrow up' /> <Icon name='arrow down' /> <Icon name='delete' color='red' />
-            </List.Content>
-            <div className='PlayerList__user'>
-              <Image avatar size='mini' src={`https://source.unsplash.com/random/120x120?1`} />
-              <List.Content>
-                Konstantin
-              </List.Content>
-            </div>
-          </div>
-        </List.Item>
+        {list.map((player, i) => {
+          const
+            canMoveUp = i !== 0,
+            canMoveDown = i !== (list.length - 1)
 
-        <List.Item>
-          <div className='PlayerList__item'>
-            <List.Content floated='right'>
-              <Icon name='arrow up' /> <Icon name='arrow down' /> <Icon name='delete' color='red' />
-            </List.Content>
-            <div className='PlayerList__user'>
-              <Image avatar size='mini' src='https://source.unsplash.com/random/120x120?2' />
-              <List.Content>
-                Katya
-              </List.Content>
-            </div>
-          </div>
-        </List.Item>
+          return (
+            <List.Item key={i}>
+              <div className='PlayerList__item'>
+                <List.Content floated='right'>
+                  {canMoveUp &&
+                    <Icon onClick={() => changePlayersOrder(i, i - 1)} name='arrow up' className='PlayerList__icon' />
+                  }
+                  {canMoveDown &&
+                    <Icon onClick={() => changePlayersOrder(i, i + 1)} name='arrow down' className='PlayerList__icon' />
+                  }
+                  <Icon onClick={() => removePlayer(player.id)} name='delete' color='red' className='PlayerList__icon' />
+                </List.Content>
+                <div className='PlayerList__user'>
+                  <Image avatar src={`http://thecatapi.com/api/images/get?${player.id}`} />
+                  <List.Content>
+                    {player.name}
+                  </List.Content>
+                </div>
+              </div>
+            </List.Item>
+          )
+        })}
       </List>
     </div>
   )
 }
 
 PlayerList.propTypes = {
-  title: PropTypes.string,
+  list: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    order: PropTypes.number,
+  })),
+  changePlayersOrder: PropTypes.func,
+  removePlayer: PropTypes.func,
 }
 
 export default PlayerList
