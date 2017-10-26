@@ -1,0 +1,21 @@
+.EnterTheGame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+
+  background-size: cover;
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+  background-image: url(./assets/lebowski.jpg);
+}
+
+.EnterTheGame__header {
+  color: crimson;
+  text-shadow: 5px 5px 0 #fff;
+}
+
+.EnterTheGame:active .EnterTheGame__header {
+  color: #fff;
+  text-shadow: 5px 5px 0 crimson;
+}

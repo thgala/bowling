@@ -1,0 +1,45 @@
+.StartTheGame {
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.StartTheGame__ball {
+  width: 100px;
+  height: 100px;
+  display: block;
+  transform: translate3d(0, 0, 0);
+  margin: 0 auto;
+
+  background-size: cover;
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+  background-image: url(./assets/bb4.svg);
+}
+
+.StartTheGame__link:hover .StartTheGame__ball {
+  animation-name: shake;
+  animation-duration: 0.3s;
+  transform-origin: 50% 50%;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.StartTheGame__header {
+  color: crimson;
+  text-shadow: 5px 5px 0 #fff;
+}
+
+@keyframes shake {
+  0% { -webkit-transform: translate(1px, 1px) rotate(0deg); }
+  10% { -webkit-transform: translate(-1px, -1px) rotate(36deg); }
+  20% { -webkit-transform: translate(-2px, 0px) rotate(72deg); }
+  30% { -webkit-transform: translate(0px, 1px) rotate(108deg); }
+  40% { -webkit-transform: translate(1px, -1px) rotate(144deg); }
+  50% { -webkit-transform: translate(-1px, 1px) rotate(180deg); }
+  60% { -webkit-transform: translate(-2px, 1px) rotate(214deg); }
+  70% { -webkit-transform: translate(1px, 1px) rotate(252deg); }
+  80% { -webkit-transform: translate(-1px, -1px) rotate(288deg); }
+  90% { -webkit-transform: translate(2px, 1px) rotate(324deg); }
+  100% { -webkit-transform: translate(1px, -1px) rotate(360deg); }
+}

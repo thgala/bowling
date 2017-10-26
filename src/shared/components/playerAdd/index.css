@@ -1,0 +1,8 @@
+.PlayerAdd{
+  display: flex;
+  flex-direction: column;
+}
+
+.PlayerAdd__input{
+  margin-bottom: 15px;
+}

@@ -1,0 +1,15 @@
+.Header{
+  background: crimson;
+  padding: 15px 0;
+  margin-bottom: 30px;
+}
+
+.Header__wrap{
+  display: flex;
+  justify-content: space-between;
+}
+
+.Header__title{
+  text-align: center;
+  flex: 1;
+}

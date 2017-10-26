@@ -1,0 +1,20 @@
+.PlayerList{
+  margin-bottom: 30px;
+}
+
+.PlayerList__item{
+  padding: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.PlayerList__user{
+  display: flex;
+  align-items: center;
+  order: -1;
+}
+
+.PlayerList__user div {
+  margin-left: 15px;
+}
