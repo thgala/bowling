@@ -3,33 +3,34 @@ import PropTypes from 'prop-types'
 
 import './index.css'
 
-const FrameItem = ({ rollList, frameStatus, frameTotal }) => {
+const FrameItem = ({ rollList, status, totalScore }) => {
   return (
     <div className={'FrameItem'}>
       <div className='FrameItem__rollList'>
-        <div className='FrameItem__roll'>
-          4
-        </div>
-        <div className='FrameItem__roll'>
-          6
-        </div>
+        {rollList.map((roll, i) =>
+          <div key={i} className='FrameItem__roll'>
+            {roll.score === 0 ? '_' : roll.score}
+          </div>
+        )}
       </div>
       <div className='FrameItem__total'>
-        {frameTotal}
+        {totalScore === 0 ? '' : `Frame total: ${totalScore}`}
       </div>
     </div>
   )
 }
 
 FrameItem.defaultProps = {
-  frameTotal: 0,
+  totalScore: 0,
   rollList: []
 }
 
 FrameItem.propTypes = {
-  rollList: PropTypes.arrayOf(PropTypes.number),
-  frameStatus: PropTypes.oneOf(['strike', 'spare', 'open']),
-  frameTotal: PropTypes.number,
+  rollList: PropTypes.arrayOf(PropTypes.shape({
+    score: PropTypes.number,
+  })),
+  status: PropTypes.oneOf(['strike', 'spare', 'open', '']),
+  totalScore: PropTypes.number,
 }
 
 export default FrameItem

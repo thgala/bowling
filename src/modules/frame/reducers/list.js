@@ -8,7 +8,7 @@ import { arrayFromNumber } from '../helpers'
     {
       playerId: 1,
       number: 1,
-      rolls: [
+      rollList: [
         {
           score: 10,
         }
@@ -37,7 +37,7 @@ export default function frameList (state = defaultState, action) {
           list.push({
             playerId: playerList[i].id,
             number: k + 1,
-            rolls: rollList.map(() => ({
+            rollList: rollList.map(() => ({
               score: 0,
             })),
             status: '',

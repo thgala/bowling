@@ -11,8 +11,8 @@ import Frame from '../../modules/frame'
 
 
 const stateToProps = createStructuredSelector({
-  frameList: Frame.selectors.list,
-  frameNumberList: Frame.selectors.numberList,
+  framesGroupedByPlayerId: Frame.selectors.groupedByPlayerId,
+  framesGroupedByNumber: Frame.selectors.groupedByNumber,
 })
 
 const actionCreators = dispatch => ({
@@ -46,14 +46,14 @@ class GamePlay_Connect extends Component {
 
   render() {
     const
-      { playerList, frameList, frameNumberList } = this.props
+      { playerList, framesGroupedByPlayerId, framesGroupedByNumber } = this.props
 
-    return frameList.length === 0 ? null : (
+    return (
       <div>
         <FrameTable
           playerList={playerList}
-          frameList={frameList}
-          frameNumberList={frameNumberList}
+          framesGroupedByPlayerId={framesGroupedByPlayerId}
+          framesGroupedByNumber={framesGroupedByNumber}
         />
       </div>
     );
