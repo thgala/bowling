@@ -1,23 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Table } from 'semantic-ui-react'
+import groupBy from 'lodash.groupby'
 
 import './index.css'
 
 import FrameItem from '../frameItem'
 
-const FrameTable = ({ playerList, totalFrames }) => {
-  const framesArray = Array.from({ length: totalFrames }, (v, i) => i)
+const FrameTable = ({ playerList, frameList, frameNumberList }) => {
+  const framesByNumber = groupBy(frameList, 'number')
 
-  return playerList.length === 0 ? null : (
+  return (
     <div className='FrameTable'>
       <Table definition>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell />
-            {framesArray.map((item, i) =>
+            {frameNumberList.map((frameNumber, i) =>
               <Table.HeaderCell key={i}>
-                {i + 1}
+                {frameNumber}
               </Table.HeaderCell>
             )}
             <Table.HeaderCell>Total</Table.HeaderCell>
@@ -28,11 +29,17 @@ const FrameTable = ({ playerList, totalFrames }) => {
           {playerList.map((player, i) =>
             <Table.Row key={i}>
               <Table.Cell>{player.name}</Table.Cell>
-              {framesArray.map((item, k) =>
-                <Table.Cell key={k}>
-                  <FrameItem />
-                </Table.Cell>
-              )}
+              {frameList
+                .filter(frame => frame.playerId === player.id)
+                .map((item, k) =>
+                  <Table.Cell key={k}>
+                    <FrameItem
+                      rollList={[]}
+                      frameStatus={'strike'}
+                      frameTotal={10}
+                    />
+                  </Table.Cell>
+                )}
               <Table.Cell>100</Table.Cell>
             </Table.Row>
           )}
@@ -44,15 +51,25 @@ const FrameTable = ({ playerList, totalFrames }) => {
 
 FrameTable.defaultProps = {
   playerList: [],
-  totalFrames: 10,
+  frameList: [],
+  frameHeaderList: [],
 }
 
 FrameTable.propTypes = {
+  frameHeaderList: PropTypes.arrayOf(PropTypes.number),
   playerList: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
   })),
-  totalFrames: PropTypes.number,
+  frameList: PropTypes.arrayOf(PropTypes.shape({
+    playerId: PropTypes.number,
+    number: PropTypes.number,
+    rolls: PropTypes.arrayOf(PropTypes.shape({
+      score: PropTypes.number,
+    })),
+    status: PropTypes.oneOf(['strike', 'spare', 'open', '']),
+    totalScore: PropTypes.number,
+  }))
 }
 
 export default FrameTable

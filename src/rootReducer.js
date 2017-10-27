@@ -1,8 +1,11 @@
 import { combineReducers } from 'redux'
-import player from './modules/player'
+
+import Player from './modules/player'
+import Frame from './modules/frame'
 
 const modules = [
-  player,
+  Player,
+  Frame,
 ]
 
 const reducers = modules

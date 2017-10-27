@@ -5,10 +5,10 @@ import {
 } from '../actionTypes'
 
 /*
-  {
+  [{
     id: Number,
     name: String,
-  }
+  }]
 */
 
 const defaultState = []

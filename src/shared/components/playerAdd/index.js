@@ -15,11 +15,11 @@ class PlayerAdd extends Component {
       inputError: ''
     }
 
-    this.addPlayer = this.addPlayer.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
     this.setInputValue = this.setInputValue.bind(this)
   }
 
-  addPlayer(event){
+  onSubmit(event){
     const
       { addPlayer } = this.props,
       { inputValue } = this.state,
@@ -51,7 +51,7 @@ class PlayerAdd extends Component {
 
     return (
       <div className='PlayerAdd'>
-        <form onSubmit={this.addPlayer}>
+        <form onSubmit={this.onSubmit}>
           <Input
             fluid
             placeholder={`Player's name`}

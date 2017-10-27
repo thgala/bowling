@@ -22,7 +22,7 @@ class StartTheGame_Connect extends Component {
           disabled={playerList.length === 0}
         />
       </div>
-    );
+    )
   }
 }
 

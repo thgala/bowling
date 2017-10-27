@@ -33,7 +33,7 @@ class PlayerSelection_Connect extends Component {
           addPlayer={playerActions.addPlayer}
         />
       </div>
-    );
+    )
   }
 }
 

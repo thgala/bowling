@@ -1,34 +1,35 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Header } from 'semantic-ui-react'
 
 import './index.css'
 
-const FrameItem = () => {
+const FrameItem = ({ rollList, frameStatus, frameTotal }) => {
   return (
-    <div className='FrameItem'>
+    <div className={'FrameItem'}>
       <div className='FrameItem__rollList'>
-        <div className='FrameItem__roll'>
-          6
-        </div>
         <div className='FrameItem__roll'>
           4
         </div>
+        <div className='FrameItem__roll'>
+          6
+        </div>
       </div>
       <div className='FrameItem__total'>
-        10
+        {frameTotal}
       </div>
     </div>
   )
 }
 
 FrameItem.defaultProps = {
-  onClick() {}
+  frameTotal: 0,
+  rollList: []
 }
 
 FrameItem.propTypes = {
-  disabled: PropTypes.bool,
-  onClick: PropTypes.func,
+  rollList: PropTypes.arrayOf(PropTypes.number),
+  frameStatus: PropTypes.oneOf(['strike', 'spare', 'open']),
+  frameTotal: PropTypes.number,
 }
 
 export default FrameItem

@@ -6,7 +6,7 @@ import Header from '../components/header'
 import PlayerSelection from '../containers/playerSelection'
 import StartTheGame from '../containers/startTheGame'
 
-class Players extends Component {
+class Players_Scene extends Component {
   render() {
     return (
       <div>
@@ -30,4 +30,4 @@ class Players extends Component {
   }
 }
 
-export default Players
+export default Players_Scene

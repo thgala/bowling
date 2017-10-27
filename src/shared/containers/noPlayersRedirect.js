@@ -7,6 +7,7 @@ import StartTheGame from '../components/startTheGame'
 
 import Player from '../../modules/player'
 
+
 function NoPlayersRedirect_Wrap(Component){
   const stateToProps = createStructuredSelector({
     playerList: Player.selectors.playerList,

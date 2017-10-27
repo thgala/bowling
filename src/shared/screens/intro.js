@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import EnterTheGame from '../components/enterTheGame'
 
-class Intro extends Component {
+class Intro_Scene extends Component {
   render() {
     return (
       <EnterTheGame />
@@ -10,4 +10,4 @@ class Intro extends Component {
   }
 }
 
-export default Intro
+export default Intro_Scene

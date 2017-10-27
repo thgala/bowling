@@ -2,6 +2,7 @@
   background: crimson;
   padding: 15px 0;
   margin-bottom: 30px;
+  display: none;
 }
 
 .Header__wrap{

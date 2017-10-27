@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Container } from 'semantic-ui-react'
 
 import Header from '../components/header'
-import FrameTable from '../containers/frameTable'
+import GameInit from '../containers/gameInit'
 
 class Play extends Component {
   render() {
@@ -11,7 +11,7 @@ class Play extends Component {
       <div>
         <Header title='Gameplay' />
         <Container>
-          <FrameTable />
+          <GameInit />
         </Container>
       </div>
     )

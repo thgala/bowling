@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
-import FrameTable from '../components/frameTable'
+import GamePlay from './gamePlay'
 
 import Player from '../../modules/player'
 import Frame from '../../modules/frame'
@@ -12,20 +12,22 @@ const stateToProps = createStructuredSelector({
   playerList: Player.selectors.playerList,
 })
 
-class FrameTable_Connect extends Component {
+class GameInit_Connect extends Component {
   render() {
     const
       { playerList } = this.props
 
     return (
       <div>
-        <FrameTable
+        <GamePlay
           playerList={playerList}
           totalFrames={Frame.constants.TOTAL_FRAMES}
+          rollsPerFrame={Frame.constants.ROLLS_PER_FRAME}
+          rollsInLastFrame={Frame.constants.ROLLS_IN_LAST_FRAME}
         />
       </div>
     );
   }
 }
 
-export default connect(stateToProps)(FrameTable_Connect)
+export default connect(stateToProps)(GameInit_Connect)
