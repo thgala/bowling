@@ -34,6 +34,7 @@ const FrameTable = ({ playerList, framesGroupedByPlayerId, framesGroupedByNumber
                   .map((frame, k) =>
                     <Table.Cell key={k}>
                       <FrameItem
+                        isActive={frame.isActive}
                         rollList={frame.rollList}
                         status={frame.status}
                         totalScore={frame.totalScore}

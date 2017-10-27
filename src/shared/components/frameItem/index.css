@@ -14,7 +14,6 @@
 
 .FrameItem__roll:last-child {
   border-left: 1px solid #eee;
-  border-bottom: 1px solid #eee;
 }
 
 .FrameItem__total {
@@ -22,4 +21,9 @@
   text-align: center;
   font-weight: bold;
   font-size: 8px;
+  border-top: 1px solid #eee;
+}
+
+.FrameItem.isActive {
+  border-color: #777;
 }

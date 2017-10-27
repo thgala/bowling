@@ -1,3 +1,6 @@
 import { MODULE_NAME } from './constants'
 
 export const INIT_FRAME_LIST = `${MODULE_NAME}/INIT_FRAME_LIST`
+export const ROLLING_STARTED = `${MODULE_NAME}/ROLLING_STARTED`
+export const ROLLING_STOPED = `${MODULE_NAME}/ROLLING_STOPED`
+export const RESET_PINS = `${MODULE_NAME}/RESET_PINS`

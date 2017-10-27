@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classname from 'classname'
 
 import './index.css'
 
-const FrameItem = ({ rollList, status, totalScore }) => {
+const FrameItem = ({ rollList, status, totalScore, isActive }) => {
   return (
-    <div className={'FrameItem'}>
+    <div className={classname('FrameItem', { isActive })}>
       <div className='FrameItem__rollList'>
         {rollList.map((roll, i) =>
           <div key={i} className='FrameItem__roll'>
@@ -13,9 +14,9 @@ const FrameItem = ({ rollList, status, totalScore }) => {
           </div>
         )}
       </div>
-      <div className='FrameItem__total'>
-        {totalScore === 0 ? '' : `Frame total: ${totalScore}`}
-      </div>
+      {totalScore !== 0 && <div className='FrameItem__total'>
+        {totalScore}
+      </div>}
     </div>
   )
 }
@@ -26,6 +27,7 @@ FrameItem.defaultProps = {
 }
 
 FrameItem.propTypes = {
+  isActive: PropTypes.bool,
   rollList: PropTypes.arrayOf(PropTypes.shape({
     score: PropTypes.number,
   })),
