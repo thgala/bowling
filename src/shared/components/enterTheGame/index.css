@@ -11,11 +11,9 @@
 }
 
 .EnterTheGame__header {
-  color: crimson;
-  text-shadow: 5px 5px 0 #fff;
+  color: #fff;
 }
 
 .EnterTheGame:active .EnterTheGame__header {
-  color: #fff;
-  text-shadow: 5px 5px 0 crimson;
+  color: crimson;
 }
