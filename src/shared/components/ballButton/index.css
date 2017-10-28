@@ -4,7 +4,11 @@
   justify-content: center;
 
   transform: translate3d(0, 0, 0);
-  transition: 0.6s all ease;
+  transition: 0.3s all ease;
+}
+
+.BallButton__wrapper {
+  cursor: pointer;
 }
 
 .BallButton__ball {
@@ -14,6 +18,11 @@
   transform: translate3d(0, 0, 0);
   margin: 0 auto;
 
+  animation-duration: 0.3s;
+  transform-origin: 50% 50%;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
   background-size: cover;
   background-position: 50% 0%;
   background-repeat: no-repeat;
@@ -22,10 +31,10 @@
 
 .BallButton__wrapper:hover .BallButton__ball {
   animation-name: shake;
-  animation-duration: 0.3s;
-  transform-origin: 50% 50%;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+}
+
+.BallButton.loading .BallButton__ball {
+  animation-name: shake !important;
 }
 
 .BallButton__header {
@@ -34,16 +43,14 @@
   text-align: center;
 }
 
-.BallButton.disabled {
+.BallButton.disabled, .BallButton.loading {
   opacity: 0.5;
   transform: scale(0.85);
-}
-
-.BallButton.disabled .BallButton__wrapper {
   pointer-events: none;
 }
 
-.BallButton.disabled .BallButton__wrapper:hover {
+.BallButton.disabled .BallButton__wrapper:hover .BallButton__ball,
+.BallButton.noHoverRoll .BallButton__wrapper:hover .BallButton__ball{
   animation-name: none;
 }
 

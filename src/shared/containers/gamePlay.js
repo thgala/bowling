@@ -56,6 +56,7 @@ class GamePlay_Connect extends Component {
           framesNumberList={framesNumberList}
         />
         <BallButton
+          noHoverRoll
           loading={isRolling}
           onClick={gameplayActions.rollTheBall}
           title='R O L L'

@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
 import { createStructuredSelector } from 'reselect'
 
-import StartTheGame from '../components/startTheGame'
-
 import Player from '../../modules/player'
 
 

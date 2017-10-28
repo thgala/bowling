@@ -1,4 +1,4 @@
-import { INIT_GAMEPLAY, ROLL_STARTED, ROLL_FINISHED } from './actionTypes'
+import { INIT_GAMEPLAY, ROLL_STARTED, ROLL_STOPED } from './actionTypes'
 import {
   activeIndex as activeIndexSelector,
   activeRollIndex as activeRollIndexSelector,
@@ -20,7 +20,7 @@ export function rollTheBall() {
   return (dispatch, getState) => {
     dispatch({ type: ROLL_STARTED })
     setTimeout(() => {
-      dispatch( updateStatus() )
+      dispatch({ type: ROLL_STOPED })
     }, 3000)
   }
 }

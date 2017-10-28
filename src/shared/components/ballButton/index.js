@@ -5,13 +5,13 @@ import classname from 'classname'
 
 import './index.css'
 
-const BallButton = ({ disabled, loading, onClick, title }) => {
+const BallButton = ({ disabled, loading, noHoverRoll, onClick, title }) => {
 
   const inactive = disabled || loading
 
   return (
     <div
-      className={classname('BallButton', { disabled, loading })}
+      className={classname('BallButton', { disabled, loading, noHoverRoll })}
       onClick={inactive ? (e => e.preventDefault()) : onClick}>
       <div className='BallButton__wrapper'>
         <div className='BallButton__ball' />
@@ -29,6 +29,7 @@ BallButton.defaultProps = {
 }
 
 BallButton.propTypes = {
+  noHoverRoll: PropTypes.bool,
   disabled: PropTypes.bool,
   loading: PropTypes.bool,
   onClick: PropTypes.func,

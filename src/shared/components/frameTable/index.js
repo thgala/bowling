@@ -7,11 +7,11 @@ import './index.css'
 import FrameItem from '../frameItem'
 
 const FrameTable = ({ playerList, framesNumberList, framesPerPlayer, activePlayerId, activeFrameNumber }) => {
-  const truePlayers = playerList
-    .filter(player => Object.keys(framesPerPlayer).indexOf(`${player.id}`) !== -1)
+  const fakePlayers = playerList
+    .filter(player => Object.keys(framesPerPlayer).indexOf(`${player.id}`) === -1)
     .length
 
-  return truePlayers === 0 ? null : (
+  return fakePlayers !== 0 ? null : (
     <div className='FrameTable'>
       <Table definition>
         {framesNumberList.length !== 0 && (

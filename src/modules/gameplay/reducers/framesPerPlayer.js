@@ -1,6 +1,6 @@
 import {
   INIT_GAMEPLAY,
-  ROLL_FINISHED,
+  ROLL_STOPED,
 } from '../actionTypes' 
 import { TOTAL_FRAMES, ROLLS_PER_FRAME, ROLLS_IN_LAST_FRAME } from '../constants'
 import { arrayFromNumber } from '../helpers'
@@ -44,7 +44,7 @@ export default function gameplayFramesPerPlayer (state = defaultState, action) {
         })
       }, {})
 
-    case ROLL_FINISHED:
+    case ROLL_STOPED:
       return state
 
     default:
