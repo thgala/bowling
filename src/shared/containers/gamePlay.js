@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { createStructuredSelector } from 'reselect'
 
 import FrameTable from '../components/frameTable'
+import BallButton from '../components/ballButton'
 
 import Player from '../../modules/player'
 import Gameplay from '../../modules/gameplay'
@@ -16,6 +17,7 @@ const stateToProps = createStructuredSelector({
   activeFrameNumber: Gameplay.selectors.activeFrameNumber,
   framesPerPlayer: Gameplay.selectors.framesPerPlayer,
   framesNumberList: Gameplay.selectors.framesNumberList,
+  isRolling: Gameplay.selectors.isRolling,
 })
 
 const actionCreators = dispatch => ({
@@ -41,6 +43,7 @@ class GamePlay_Connect extends Component {
         framesPerPlayer,
         framesNumberList,
         gameplayActions,
+        isRolling,
       } = this.props
 
     return (
@@ -52,7 +55,11 @@ class GamePlay_Connect extends Component {
           framesPerPlayer={framesPerPlayer}
           framesNumberList={framesNumberList}
         />
-        <div onClick={gameplayActions.rollTheBall}>Roll</div>
+        <BallButton
+          loading={isRolling}
+          onClick={gameplayActions.rollTheBall}
+          title='R O L L'
+        />
       </div>
     );
   }

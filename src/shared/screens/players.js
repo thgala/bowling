@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 import Player from '../../modules/player'
 
 import Header from '../components/header'
-import StartTheGame from '../components/startTheGame'
+import BallButton from '../components/ballButton'
 import PlayerList from '../components/playerList'
 import PlayerAdd from '../components/playerAdd'
 
@@ -48,9 +48,12 @@ class Players_Scene extends Component {
           <PlayerAdd
             addPlayer={playerActions.addPlayer}
           />
-          <StartTheGame
-            disabled={playerList.length === 0}
-          />
+          <Link to='/play'>
+            <BallButton
+              disabled={playerList.length === 0}
+              title='G O'
+            />
+          </Link>
         </Container>
       </div>
     )
