@@ -4,35 +4,32 @@ import classname from 'classname'
 
 import './index.css'
 
-const FrameItem = ({ rollList, status, totalScore, isActive }) => {
+const FrameItem = ({ rolls, status, isActive, total }) => {
   return (
     <div className={classname('FrameItem', { isActive })}>
       <div className='FrameItem__rollList'>
-        {rollList.map((roll, i) =>
+        {rolls.map((roll, i) =>
           <div key={i} className='FrameItem__roll'>
-            {roll.score === 0 ? '_' : roll.score}
+            {roll === '' ? '_' : roll}
           </div>
         )}
       </div>
-      {totalScore !== 0 && <div className='FrameItem__total'>
-        {totalScore}
+      {total !== 0 && <div className='FrameItem__total'>
+        {total}
       </div>}
     </div>
   )
 }
 
 FrameItem.defaultProps = {
-  totalScore: 0,
-  rollList: []
+  rolls: []
 }
 
 FrameItem.propTypes = {
   isActive: PropTypes.bool,
-  rollList: PropTypes.arrayOf(PropTypes.shape({
-    score: PropTypes.number,
-  })),
+  rolls: PropTypes.arrayOf(PropTypes.string),
   status: PropTypes.oneOf(['strike', 'spare', 'open', '']),
-  totalScore: PropTypes.number,
+  total: PropTypes.number,
 }
 
 export default FrameItem

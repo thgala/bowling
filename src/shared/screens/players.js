@@ -1,13 +1,31 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Header as Heading, Icon, Divider } from 'semantic-ui-react'
+import { bindActionCreators } from 'redux'
+import { createStructuredSelector } from 'reselect'
+import { connect } from 'react-redux'
+
+import Player from '../../modules/player'
 
 import Header from '../components/header'
-import PlayerSelection from '../containers/playerSelection'
-import StartTheGame from '../containers/startTheGame'
+import StartTheGame from '../components/startTheGame'
+import PlayerList from '../components/playerList'
+import PlayerAdd from '../components/playerAdd'
+
+
+const stateToProps = createStructuredSelector({
+  playerList: Player.selectors.list,
+})
+
+const actionCreators = dispatch => ({
+  playerActions: bindActionCreators(Player.actions, dispatch),
+})
 
 class Players_Scene extends Component {
   render() {
+    const
+      { playerList, playerActions } = this.props
+
     return (
       <div>
         <Header title='Players' />
@@ -22,12 +40,21 @@ class Players_Scene extends Component {
             </p>
           </div>
           <Divider />
-          <PlayerSelection />
-          <StartTheGame />
+          <PlayerList
+            list={playerList}
+            changePlayersOrder={playerActions.changePlayersOrder}
+            removePlayer={playerActions.removePlayer}
+          />
+          <PlayerAdd
+            addPlayer={playerActions.addPlayer}
+          />
+          <StartTheGame
+            disabled={playerList.length === 0}
+          />
         </Container>
       </div>
     )
   }
 }
 
-export default Players_Scene
+export default connect(stateToProps, actionCreators)(Players_Scene)

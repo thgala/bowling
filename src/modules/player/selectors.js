@@ -3,7 +3,7 @@ import { MODULE_NAME } from './constants'
 
 const moduleState = state => state[MODULE_NAME]
 
-export const playerList = createSelector(
+export const list = createSelector(
   moduleState,
-  moduleState => moduleState.playerList
+  moduleState => moduleState.list
 )

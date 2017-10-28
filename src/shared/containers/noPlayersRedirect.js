@@ -10,7 +10,7 @@ import Player from '../../modules/player'
 
 function NoPlayersRedirect_Wrap(Component){
   const stateToProps = createStructuredSelector({
-    playerList: Player.selectors.playerList,
+    playerList: Player.selectors.list,
   })
 
   class NoPlayersRedirect_Connect extends Component {
