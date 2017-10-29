@@ -4,8 +4,10 @@ import { Container, Header as Heading, Icon, Divider } from 'semantic-ui-react'
 import { bindActionCreators } from 'redux'
 import { createStructuredSelector } from 'reselect'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router'
 
 import Player from '../../modules/player'
+import Gameplay from '../../modules/gameplay'
 
 import Header from '../components/header'
 import BallButton from '../components/ballButton'
@@ -14,17 +16,25 @@ import PlayerAdd from '../components/playerAdd'
 
 
 const stateToProps = createStructuredSelector({
+  isGameplayReady: Gameplay.selectors.isReady,
   playerList: Player.selectors.list,
 })
 
 const actionCreators = dispatch => ({
   playerActions: bindActionCreators(Player.actions, dispatch),
+  gameplayActions: bindActionCreators(Gameplay.actions, dispatch),
 })
 
 class Players_Scene extends Component {
+
   render() {
     const
-      { playerList, playerActions } = this.props
+      { playerList, playerActions, isGameplayReady, gameplayActions } = this.props,
+      noPlayers = playerList.length === 0
+
+    const initialiseGameplay = noPlayers
+      ? (e => e.preventDefault())
+      : () => gameplayActions.init(playerList)
 
     return (
       <div>
@@ -48,12 +58,14 @@ class Players_Scene extends Component {
           <PlayerAdd
             addPlayer={playerActions.addPlayer}
           />
-          <Link to='/play'>
-            <BallButton
-              disabled={playerList.length === 0}
-              title='G O'
-            />
-          </Link>
+          <BallButton
+            disabled={noPlayers}
+            title='G O'
+            onClick={initialiseGameplay}
+          />
+          {isGameplayReady && (
+            <Redirect to='/play' />
+          )}
         </Container>
       </div>
     )

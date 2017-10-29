@@ -5,7 +5,7 @@ import { save, load } from 'redux-localstorage-simple'
 function storeCreator(rootReducer = () => {}) {
   const enhancers = []
   const middleware = [
-    thunk
+    thunk,
   ]
 
   if (process.env.NODE_ENV === 'development') {
@@ -23,7 +23,7 @@ function storeCreator(rootReducer = () => {}) {
 
   const store = createStore(
     rootReducer,
-    load(),
+    // load(),
     composedEnhancers,
   )
 

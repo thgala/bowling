@@ -6,14 +6,10 @@ import classname from 'classname'
 import './index.css'
 
 const BallButton = ({ disabled, loading, noHoverRoll, onClick, title }) => {
-
   const inactive = disabled || loading
-
   return (
-    <div
-      className={classname('BallButton', { disabled, loading, noHoverRoll })}
-      onClick={inactive ? (e => e.preventDefault()) : onClick}>
-      <div className='BallButton__wrapper'>
+    <div className={classname('BallButton', { disabled, loading, noHoverRoll })}>
+      <div className='BallButton__wrapper' onClick={inactive ? (e => e.preventDefault()) : onClick}>
         <div className='BallButton__ball' />
         <Header as='h1' inverted>
           <div className='BallButton__header'>{title}</div>

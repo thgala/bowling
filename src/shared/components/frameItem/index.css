@@ -16,6 +16,10 @@
   border-left: 1px solid #eee;
 }
 
+.FrameItem__roll:first-child {
+  border-left: none;
+}
+
 .FrameItem__total {
   padding: 5px 0;
   text-align: center;

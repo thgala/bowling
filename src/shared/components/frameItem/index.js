@@ -4,13 +4,17 @@ import classname from 'classname'
 
 import './index.css'
 
-const FrameItem = ({ rolls, status, isActive, total }) => {
+const FrameItem = ({ rollList, status, isActive, total }) => {
   return (
     <div className={classname('FrameItem', { isActive })}>
       <div className='FrameItem__rollList'>
-        {rolls.map((roll, i) =>
+        {rollList.length === 0 ? (
+          <div className='FrameItem__roll'>
+            _
+          </div>
+        ) : rollList.map((roll, i) =>
           <div key={i} className='FrameItem__roll'>
-            {roll === '' ? '_' : roll}
+            {roll}
           </div>
         )}
       </div>
@@ -22,12 +26,12 @@ const FrameItem = ({ rolls, status, isActive, total }) => {
 }
 
 FrameItem.defaultProps = {
-  rolls: []
+  rollList: []
 }
 
 FrameItem.propTypes = {
   isActive: PropTypes.bool,
-  rolls: PropTypes.arrayOf(PropTypes.string),
+  rollList: PropTypes.arrayOf(PropTypes.string),
   status: PropTypes.oneOf(['strike', 'spare', 'open', '']),
   total: PropTypes.number,
 }

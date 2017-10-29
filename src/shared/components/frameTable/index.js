@@ -4,14 +4,11 @@ import { Table } from 'semantic-ui-react'
 
 import './index.css'
 
+import Gameplay from '../../../modules/gameplay'
 import FrameItem from '../frameItem'
 
-const FrameTable = ({ playerList, framesNumberList, framesPerPlayer, activePlayerId, activeFrameNumber }) => {
-  const fakePlayers = playerList
-    .filter(player => Object.keys(framesPerPlayer).indexOf(`${player.id}`) === -1)
-    .length
-
-  return fakePlayers !== 0 ? null : (
+const FrameTable = ({ framesNumberList, scoresPerPlayer, activeFrameIndex, activePlayerIndex }) => {
+  return (
     <div className='FrameTable'>
       <Table definition>
         {framesNumberList.length !== 0 && (
@@ -29,26 +26,26 @@ const FrameTable = ({ playerList, framesNumberList, framesPerPlayer, activePlaye
         )}
 
         <Table.Body>
-          {playerList.map((player, i) => {
-            const totalPerPlayer = framesPerPlayer[player.id]
+          {scoresPerPlayer.map((player, i) => {
+            const totalPerPlayer = player.frameList
               .reduce((acc, val) => acc + val.total, 0)
 
             return (
               <Table.Row key={i}>
                 <Table.Cell>{player.name}</Table.Cell>
-                {framesPerPlayer[player.id]
+                {player.frameList
                   .map((frame, k) => {
                     const
                       isActive = (
-                        frame.number === activeFrameNumber &&
-                        player.id === activePlayerId
+                        k === activeFrameIndex &&
+                        i === activePlayerIndex
                       )
 
                     return (
                       <Table.Cell key={k}>
                         <FrameItem
                           isActive={isActive}
-                          rolls={frame.rolls}
+                          rollList={frame.rollList}
                           status={frame.status}
                           total={frame.total}
                         />
@@ -65,23 +62,23 @@ const FrameTable = ({ playerList, framesNumberList, framesPerPlayer, activePlaye
   )
 }
 
-FrameTable.defaultProps = {
-  playerList: [],
-  framesNumberList: [],
-  framesPerPlayer: {},
-  activePlayerId: null,
-  activeFrameNumber: null,
-}
+// FrameTable.defaultProps = {
+//   playerList: [],
+//   framesNumberList: [],
+//   framesPerPlayer: {},
+//   activePlayerIndex: null,
+//   activeFrameNumber: null,
+// }
 
-FrameTable.propTypes = {
-  playerList: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-  })),
-  framesNumberList: PropTypes.array,
-  framesPerPlayer: PropTypes.object,
-  activePlayerId: PropTypes.number,
-  activeFrameNumber: PropTypes.number,
-}
+// FrameTable.propTypes = {
+//   playerList: PropTypes.arrayOf(PropTypes.shape({
+//     id: PropTypes.number,
+//     name: PropTypes.string,
+//   })),
+//   framesNumberList: PropTypes.array,
+//   framesPerPlayer: PropTypes.object,
+//   activePlayerIndex: PropTypes.number,
+//   activeFrameNumber: PropTypes.number,
+// }
 
 export default FrameTable

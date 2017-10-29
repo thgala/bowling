@@ -1,12 +1,14 @@
-import { INIT_GAMEPLAY, ROLL_STARTED, ROLL_STOPED } from './actionTypes'
 import {
-  activeIndex as activeIndexSelector,
-  activeRollIndex as activeRollIndexSelector,
-  active as activeSelector,
-  list as listSelector,
+  INIT_GAMEPLAY,
+  ADD_SCORE_TO_FRAME,
+  UPDATE_STATUS,
+} from './actionTypes'
+
+import {
+  pinsLeft as pinsLeftSelector,
 } from './selectors'
-import { getRandomInt, arrayFromNumber } from './helpers'
 import { TOTAL_FRAMES } from './constants'
+import { arrayFromNumber } from './helpers'
 
 export function init(playerList) {
   return {
@@ -16,60 +18,23 @@ export function init(playerList) {
   }
 }
 
-export function rollTheBall() {
-  return (dispatch, getState) => {
-    dispatch({ type: ROLL_STARTED })
-    setTimeout(() => {
-      dispatch({ type: ROLL_STOPED })
-    }, 3000)
+export function addScoreToFrame(score, playerIndex, frameIndex) {
+  return {
+    type: ADD_SCORE_TO_FRAME,
+    score,
+    playerIndex,
+    frameIndex,
   }
 }
 
-export function updateStatus() {
-  return (dispatch, getState) => {
-    // const activeIndex = activeIndexSelector( getState() )
-    // const activeRollIndex = activeRollIndexSelector( getState() )
-    // const active = activeSelector( getState() )
-    // const list = listSelector( getState() )
-
-    // function sumOfBallsInFrame() {
-    //   return self.rolls[frameIndex] + self.rolls[frameIndex + 1];
-    // }
-
-    // function spareBonus() {
-    //   return self.rolls[frameIndex + 2];
-    // }
-
-    // function strikeBonus() {
-    //   return self.rolls[frameIndex + 1] + self.rolls[frameIndex + 2];
-    // }
-
-    // function isStrike() {
-    //   return self.rolls[frameIndex] === 10;
-    // }
-
-    // function isSpare() {
-    //   return self.rolls[frameIndex] + self.rolls[frameIndex + 1] === 10;
-    // }
-
-    // for (var frame = 0; frame < 10; frame++) {
-    //   if (isStrike()) {
-    //     score += 10 + strikeBonus();
-    //     frameIndex++;
-    //   } else if (isSpare()) {
-    //     score += 10 + spareBonus();
-    //     frameIndex += 2;
-    //   } else {
-    //     score += sumOfBallsInFrame();
-    //     frameIndex += 2;
-    //   }
-    // }
-    // return score;
-
-    // dispatch({
-    //   type: ROLL_FINISHED,
-    //   score: ,
-    //   status: ,
-    // })
+export function updateStatus(score, nextPlayerIndex, nextFrameIndex, nextActiveRollIndex, nextPinsLeft, isOver = false) {
+  return {
+    type: UPDATE_STATUS,
+    score,
+    nextPlayerIndex,
+    nextFrameIndex,
+    nextActiveRollIndex,
+    nextPinsLeft,
+    isOver,
   }
 }
