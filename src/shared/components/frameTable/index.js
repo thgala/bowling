@@ -46,7 +46,6 @@ const FrameTable = ({ framesNumberList, scoresPerPlayer, activeFrameIndex, activ
                         <FrameItem
                           isActive={isActive}
                           rollList={frame.rollList}
-                          status={frame.status}
                           total={frame.total}
                         />
                       </Table.Cell>
@@ -62,23 +61,18 @@ const FrameTable = ({ framesNumberList, scoresPerPlayer, activeFrameIndex, activ
   )
 }
 
-// FrameTable.defaultProps = {
-//   playerList: [],
-//   framesNumberList: [],
-//   framesPerPlayer: {},
-//   activePlayerIndex: null,
-//   activeFrameNumber: null,
-// }
+FrameTable.defaultProps = {
+  scoresPerPlayer: [],
+  framesNumberList: [],
+  activeFrameIndex: null,
+  activePlayerIndex: null,
+}
 
-// FrameTable.propTypes = {
-//   playerList: PropTypes.arrayOf(PropTypes.shape({
-//     id: PropTypes.number,
-//     name: PropTypes.string,
-//   })),
-//   framesNumberList: PropTypes.array,
-//   framesPerPlayer: PropTypes.object,
-//   activePlayerIndex: PropTypes.number,
-//   activeFrameNumber: PropTypes.number,
-// }
+FrameTable.propTypes = {
+  scoresPerPlayer: PropTypes.array,
+  framesNumberList: PropTypes.array,
+  activeFrameIndex: PropTypes.number,
+  activePlayerIndex: PropTypes.number,
+}
 
 export default FrameTable

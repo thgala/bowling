@@ -1,6 +1,7 @@
 import {
   INIT_GAMEPLAY,
   UPDATE_STATUS,
+  RESET_GAMEPLAY,
 } from '../actionTypes' 
 import {
   TOTAL_PINS,
@@ -39,6 +40,12 @@ export default function gameplayStatus (state = defaultState, action) {
         activeFrameIndex: nextFrameIndex,
         activeRollIndex: nextActiveRollIndex,
         pinsLeft: nextPinsLeft
+      })
+
+    case RESET_GAMEPLAY:
+      return Object.assign({}, defaultState, {
+        isReady: false,
+        framesNumberList: state.framesNumberList,
       })
 
     default:

@@ -12,11 +12,6 @@ import groupBy from 'lodash.groupby'
 
 const moduleState = state => state[MODULE_NAME]
 
-export const scoresPerPlayer = createSelector(
-  moduleState,
-  moduleState => moduleState.scoresPerPlayer,
-)
-
 export const status = createSelector(
   moduleState,
   moduleState => moduleState.status,
@@ -67,31 +62,48 @@ export const framesNumberList = createSelector(
   status => status.framesNumberList
 )
 
-// export const scoreTable = createSelector(
-//   playerList,
-//   playerList => {
-//     return {
-//       playerList
-//       // playerList: playerList.map(player => {
-//       //   return Object.assign({}, player, {
-//       //     frameList: player.frameList((frame, i) => {
-//       //       return Object.assign({}, frame, {
-//       //         total: calculateFrameTotal(index, frame, player.frameList)
-//       //       })
-//       //     })
-//       //   })
-//       // })
+export const scoresPerPlayer = createSelector(
+  moduleState,
+  moduleState => moduleState.scoresPerPlayer.map(player => {
+    return Object.assign({}, player, {
+      frameList: player.frameList.map((frame, i) => {
+        return Object.assign({}, frame, {
+          total: calculateFrameTotal(i, frame, player.frameList)
+        })
+      })
+    })
+  })
+)
 
-//     }
-//   }
-// )
+function calculateFrameTotal(index, frame, frameList){
+  const { rollList } = frame
+  const nextFrameRolls = frameList[index + 1] ? frameList[index + 1].rollList : []
+  const nextFramePlusRolls = frameList[index + 2] ? frameList[index + 2].rollList : []
+  let total = 0
 
-// function calculateFrameTotal(index, frame, frameList){
-//   let frameTotal = frame.total
-  
-//   if(frame.status === FRAME_STATUS_STRIKE){
-//     total += frameList[index + 1].total + frameList[index + 1].total
-//   }
+  if(rollList[0] === TOTAL_PINS){
+    total = TOTAL_PINS + findNextRoll(nextFrameRolls) + findNextPlusRoll(nextFrameRolls, nextFramePlusRolls)
+  } else if (rollList[0] + rollList[1] === TOTAL_PINS) {
+    total = TOTAL_PINS + findNextRoll(nextFrameRolls)
+  } else {
+    total = rollList.reduce((acc, val) => acc + parseInt(val), 0)
+  }
 
-//   return total
-// }
+  return total
+}
+
+function findNextRoll(nextFrameRolls){
+  return checkRoll(nextFrameRolls, 0) ? 0 : nextFrameRolls[0]
+}
+
+function findNextPlusRoll(nextFrameRolls, nextFramePlusRolls){
+  return checkRoll(nextFrameRolls, 1) ? lookNextFrame(nextFramePlusRolls) : nextFrameRolls[1]
+}
+
+function lookNextFrame(nextFramePlusRolls){
+  return checkRoll(nextFramePlusRolls, 0) ? 0 : nextFramePlusRolls[0]
+}
+
+function checkRoll(rollList, index){
+  return typeof rollList[index] === 'undefined'
+}

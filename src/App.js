@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-import {
-  Route,
-  Link
-} from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
 import 'semantic-ui-css/semantic.min.css'
 import IsGameReady from './shared/containers/isGameReady'

@@ -23,7 +23,7 @@ function storeCreator(rootReducer = () => {}) {
 
   const store = createStore(
     rootReducer,
-    // load(),
+    load(),
     composedEnhancers,
   )
 

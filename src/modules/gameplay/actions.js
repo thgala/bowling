@@ -2,6 +2,7 @@ import {
   INIT_GAMEPLAY,
   ADD_SCORE_TO_FRAME,
   UPDATE_STATUS,
+  RESET_GAMEPLAY,
 } from './actionTypes'
 
 import {
@@ -36,5 +37,11 @@ export function updateStatus(score, nextPlayerIndex, nextFrameIndex, nextActiveR
     nextActiveRollIndex,
     nextPinsLeft,
     isOver,
+  }
+}
+
+export function resetGameplay() {
+  return {
+    type: RESET_GAMEPLAY,
   }
 }

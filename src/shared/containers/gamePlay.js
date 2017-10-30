@@ -34,6 +34,7 @@ class GamePlay_Connect extends Component {
     super(props)
     this.roll = this.roll.bind(this)
     this.rollInLastFrame = this.rollInLastFrame.bind(this)
+    this.reset = this.reset.bind(this)
 
     this.isStrike = this.isStrike.bind(this)
     this.isSpare = this.isSpare.bind(this)
@@ -184,6 +185,14 @@ class GamePlay_Connect extends Component {
     }
   }
 
+  reset(event){
+    const
+      { gameplayActions } = this.props
+
+    gameplayActions.resetGameplay()
+    event.preventDefault()
+  }
+
   render() {
     const
       {
@@ -192,6 +201,7 @@ class GamePlay_Connect extends Component {
         activeFrameIndex,
         activePlayerIndex,
         isOver,
+        gameplayActions,
       } = this.props
 
     return (
@@ -204,7 +214,9 @@ class GamePlay_Connect extends Component {
         />
         {isOver && (
           <Header as='h3' textAlign='center'>
-            Done!
+            <a href='' onClick={this.reset}>
+              Reset gameplay!
+            </a>
           </Header>
         )}
         <BallButton

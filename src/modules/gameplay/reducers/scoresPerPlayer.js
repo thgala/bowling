@@ -1,6 +1,7 @@
 import {
   INIT_GAMEPLAY,
   ADD_SCORE_TO_FRAME,
+  RESET_GAMEPLAY,
 } from '../actionTypes' 
 
 const defaultState = []
@@ -31,6 +32,17 @@ export default function gameplayScoresPerPlayer (state = defaultState, action) {
             return fi !== frameIndex ? frame : Object.assign({}, frame, {
               rollList: frame.rollList.concat([score])
             })
+          })
+        })
+      })
+
+    case RESET_GAMEPLAY:
+      return state.map((player, pi) => {
+        return Object.assign({}, player, {
+          frameList: player.frameList.map((frame, i) => {
+            return {
+              rollList: [],
+            }
           })
         })
       })

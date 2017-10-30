@@ -4,7 +4,7 @@ import classname from 'classname'
 
 import './index.css'
 
-const FrameItem = ({ rollList, status, isActive, total }) => {
+const FrameItem = ({ rollList, isActive, total }) => {
   return (
     <div className={classname('FrameItem', { isActive })}>
       <div className='FrameItem__rollList'>
@@ -32,7 +32,6 @@ FrameItem.defaultProps = {
 FrameItem.propTypes = {
   isActive: PropTypes.bool,
   rollList: PropTypes.arrayOf(PropTypes.string),
-  status: PropTypes.oneOf(['strike', 'spare', 'open', '']),
   total: PropTypes.number,
 }
 
