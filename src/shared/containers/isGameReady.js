@@ -6,7 +6,7 @@ import { createStructuredSelector } from 'reselect'
 import Gameplay from '../../modules/gameplay'
 
 
-function IsGameReady_Wrap(Component, to = '/players'){
+function IsGameReady_Wrap(C, to = '/players'){
   const stateToProps = createStructuredSelector({
     isReady: Gameplay.selectors.isReady,
   })
@@ -18,7 +18,7 @@ function IsGameReady_Wrap(Component, to = '/players'){
 
       return !isReady
         ? <Redirect to={to} />
-        : <Component />
+        : <C />
     }
   }
 

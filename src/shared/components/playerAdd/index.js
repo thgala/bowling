@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Form as FormWrap, Label, Button, Input } from 'semantic-ui-react'
+import { Label, Input } from 'semantic-ui-react'
 import Form from '../../../modules/form'
 
 import './index.css'

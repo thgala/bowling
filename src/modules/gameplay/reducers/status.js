@@ -3,9 +3,6 @@ import {
   UPDATE_STATUS,
   RESET_GAMEPLAY,
 } from '../actionTypes' 
-import {
-  TOTAL_PINS,
-} from '../constants' 
 
 const defaultState = {
   isReady: false,

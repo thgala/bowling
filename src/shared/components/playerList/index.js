@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, Image, List, Icon } from 'semantic-ui-react'
+import { Image, List, Icon } from 'semantic-ui-react'
 
 import './index.css'
 

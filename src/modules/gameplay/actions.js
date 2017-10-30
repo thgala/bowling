@@ -5,9 +5,6 @@ import {
   RESET_GAMEPLAY,
 } from './actionTypes'
 
-import {
-  pinsLeft as pinsLeftSelector,
-} from './selectors'
 import { TOTAL_FRAMES } from './constants'
 import { arrayFromNumber } from './helpers'
 

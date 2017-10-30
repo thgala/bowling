@@ -4,7 +4,6 @@ import { Table } from 'semantic-ui-react'
 
 import './index.css'
 
-import Gameplay from '../../../modules/gameplay'
 import FrameItem from '../frameItem'
 
 const FrameTable = ({ framesNumberList, scoresPerPlayer, activeFrameIndex, activePlayerIndex }) => {
@@ -12,7 +11,7 @@ const FrameTable = ({ framesNumberList, scoresPerPlayer, activeFrameIndex, activ
     <div className='FrameTable'>
       <Table definition>
         {framesNumberList.length !== 0 && (
-          <Table.Header>
+          <Table.Header className='FrameTable__header'>
             <Table.Row>
               <Table.HeaderCell />
               {framesNumberList.map(frameNumber =>
@@ -51,7 +50,7 @@ const FrameTable = ({ framesNumberList, scoresPerPlayer, activeFrameIndex, activ
                       </Table.Cell>
                     )
                   })}
-                <Table.Cell>{totalPerPlayer}</Table.Cell>
+                <Table.Cell><div className='FrameTable__total'>{totalPerPlayer}</div></Table.Cell>
               </Table.Row>
             )
           })}

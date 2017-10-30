@@ -31,7 +31,7 @@ FrameItem.defaultProps = {
 
 FrameItem.propTypes = {
   isActive: PropTypes.bool,
-  rollList: PropTypes.arrayOf(PropTypes.string),
+  rollList: PropTypes.arrayOf(PropTypes.number),
   total: PropTypes.number,
 }
 

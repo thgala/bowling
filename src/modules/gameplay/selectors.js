@@ -1,14 +1,8 @@
 import { createSelector } from 'reselect'
 import {
   MODULE_NAME,
-  TOTAL_FRAMES,
   TOTAL_PINS,
-  FRAME_STATUS_STRIKE,
-  FRAME_STATUS_SPARE,
-  FRAME_STATUS_OPEN,
 } from './constants'
-import { arrayFromNumber } from './helpers'
-import groupBy from 'lodash.groupby'
 
 const moduleState = state => state[MODULE_NAME]
 
@@ -81,15 +75,24 @@ function calculateFrameTotal(index, frame, frameList){
   const nextFramePlusRolls = frameList[index + 2] ? frameList[index + 2].rollList : []
   let total = 0
 
+  if(index + 1 === frameList.length){
+    total = rollSum(rollList)
+    return total
+  }
+
   if(rollList[0] === TOTAL_PINS){
     total = TOTAL_PINS + findNextRoll(nextFrameRolls) + findNextPlusRoll(nextFrameRolls, nextFramePlusRolls)
   } else if (rollList[0] + rollList[1] === TOTAL_PINS) {
     total = TOTAL_PINS + findNextRoll(nextFrameRolls)
   } else {
-    total = rollList.reduce((acc, val) => acc + parseInt(val), 0)
+    total = rollSum(rollList)
   }
 
   return total
+}
+
+function rollSum(rollList){
+  return rollList.reduce((acc, val) => acc + parseInt(val, 10), 0)
 }
 
 function findNextRoll(nextFrameRolls){

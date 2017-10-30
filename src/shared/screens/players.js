@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { Container, Header as Heading, Icon, Divider } from 'semantic-ui-react'
 import { bindActionCreators } from 'redux'
 import { createStructuredSelector } from 'reselect'

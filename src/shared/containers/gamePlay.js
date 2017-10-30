@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { createStructuredSelector } from 'reselect'
 
 import FrameTable from '../components/frameTable'
 import BallButton from '../components/ballButton'
-import { Divider, Header } from 'semantic-ui-react'
+import { Header } from 'semantic-ui-react'
 
 import Gameplay from '../../modules/gameplay'
 const { getRandomInt } = Gameplay.helpers
-const { TOTAL_PINS, MAX_ROLLS_PER_FRAME, MAX_ROLLS_IN_LAST_FRAME } = Gameplay.constants
+const { TOTAL_PINS, MAX_ROLLS_PER_FRAME } = Gameplay.constants
 
 
 const stateToProps = createStructuredSelector({
@@ -134,7 +133,6 @@ class GamePlay_Connect extends Component {
       const score = getRandomInt(0, pinsLeft)
 
       let nextPlayerIndex
-      let nextFrameIndex
       let nextRollIndex
       let nextPinsLeft
       let nextIsOver = false
@@ -201,7 +199,6 @@ class GamePlay_Connect extends Component {
         activeFrameIndex,
         activePlayerIndex,
         isOver,
-        gameplayActions,
       } = this.props
 
     return (

@@ -1,4 +1,4 @@
-import { ADD_PLAYER, REMOVE_PLAYER, CHANGE_PLAYERS_ORDER, SET_ACTIVE_PLAYER_ID } from './actionTypes'
+import { ADD_PLAYER, REMOVE_PLAYER, CHANGE_PLAYERS_ORDER } from './actionTypes'
 
 export function addPlayer(name) {
   return {
