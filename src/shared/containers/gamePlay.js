@@ -209,13 +209,11 @@ class GamePlay_Connect extends Component {
           activeFrameIndex={activeFrameIndex}
           activePlayerIndex={activePlayerIndex}
         />
-        {isOver && (
-          <Header as='h3' textAlign='center'>
-            <a href='' onClick={this.reset}>
-              Reset gameplay!
-            </a>
-          </Header>
-        )}
+        <Header as='h3' textAlign='center'>
+          <a href='' onClick={this.reset}>
+            {isOver && 'Done! '} Reset gameplay!
+          </a>
+        </Header>
         <BallButton
           noHoverRoll
           disabled={isOver}
